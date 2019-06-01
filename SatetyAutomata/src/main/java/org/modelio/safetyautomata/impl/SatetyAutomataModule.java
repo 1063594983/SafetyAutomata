@@ -10,20 +10,20 @@ import org.modelio.api.module.parameter.IParameterEditionModel;
  * <br>All Modelio java modules should inherit from this class.
  * 
  */
-public class SafetyAutomataModule extends AbstractJavaModule {
+public class SatetyAutomataModule extends AbstractJavaModule {
 
-	private SafetyAutomataPeerModule peerModule = null;
+	private SatetyAutomataPeerModule peerModule = null;
 
-	private SafetyAutomataLifeCycleHandler lifeCycleHandler = null;
+	private SatetyAutomataLifeCycleHandler lifeCycleHandler = null;
 	
-	private static SafetyAutomataModule instance;
+	private static SatetyAutomataModule instance;
 
-	public static SafetyAutomataModule getInstance() {
+	public static SatetyAutomataModule getInstance() {
 		return instance;
 	}
 
 	@Override
-	public SafetyAutomataPeerModule getPeerModule() {
+	public SatetyAutomataPeerModule getPeerModule() {
 		return this.peerModule;
 	}
 
@@ -90,13 +90,13 @@ public class SafetyAutomataModule extends AbstractJavaModule {
 	 * invoked by Modelio when the module is installed, selected or started.
 	 * @param moduleContext context of the module, needed to access Modelio features.
 	 */
-	public SafetyAutomataModule(IModuleContext moduleContext) {
+	public SatetyAutomataModule(IModuleContext moduleContext) {
 		super(moduleContext);
 
-		SafetyAutomataModule.instance = this;
+		SatetyAutomataModule.instance = this;
 
-		this.lifeCycleHandler = new SafetyAutomataLifeCycleHandler(this);
-		this.peerModule = new SafetyAutomataPeerModule(this, moduleContext.getPeerConfiguration());
+		this.lifeCycleHandler = new SatetyAutomataLifeCycleHandler(this);
+		this.peerModule = new SatetyAutomataPeerModule(this, moduleContext.getPeerConfiguration());
 	}
 
 	/**

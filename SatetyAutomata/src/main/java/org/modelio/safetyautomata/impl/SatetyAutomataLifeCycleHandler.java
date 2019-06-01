@@ -11,13 +11,13 @@ import org.modelio.vbasic.version.Version;
  * Implementation of the IModuleLifeCycleHandler interface.
  * <br>This default implementation may be inherited by the module developers in order to simplify the code writing of the module life cycle handler .
  */
-public class SafetyAutomataLifeCycleHandler extends DefaultModuleLifeCycleHandler {
+public class SatetyAutomataLifeCycleHandler extends DefaultModuleLifeCycleHandler {
 
 	/**
 	 * Constructor.
 	 * @param module the Module this life cycle handler is instanciated for.
 	 */
-	public SafetyAutomataLifeCycleHandler(SafetyAutomataModule module) {
+	public SatetyAutomataLifeCycleHandler(SatetyAutomataModule module) {
 		super(module);
 	}
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Module id="${project.name}" class="org.modelio.junit.impl.JUnitModule" binaryversion="3.8.01" version="${project.version}" schema-level="2" uid="1cdac391-1b62-4aef-8cad-3a23d635456e">
+<Module id="JUnit" class="org.modelio.junit.impl.JUnitModule" binaryversion="3.8.01" version="1.0.00" schema-level="2" uid="1cdac391-1b62-4aef-8cad-3a23d635456e">
     <ClassPath>
-        <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
+        <PathEntry path="lib/JUnit-1.0.00.jar"/>
         <PathEntry path="lib/commons-lang3-3.1.jar"/>
     </ClassPath>
     <Profiles>

@@ -3,7 +3,7 @@ package org.modelio.safetyautomata.impl;
 import org.modelio.vbasic.version.Version;
 import org.modelio.api.module.context.configuration.IModuleAPIConfiguration;
 
-import org.modelio.safetyautomata.api.ISafetyAutomataPeerModule;
+import org.modelio.safetyautomata.api.ISatetyAutomataPeerModule;
 
 /**
  * Implementation of Module services
@@ -12,12 +12,12 @@ import org.modelio.safetyautomata.api.ISafetyAutomataPeerModule;
  * <br>Each mda component brings a specific interface that inherit from this one and gives all the desired module services.
  *
  */
-public class SafetyAutomataPeerModule implements ISafetyAutomataPeerModule {
-    private SafetyAutomataModule module;
+public class SatetyAutomataPeerModule implements ISatetyAutomataPeerModule {
+    private SatetyAutomataModule module;
 	
     private IModuleAPIConfiguration peerConfiguration;
     
-	public SafetyAutomataPeerModule(SafetyAutomataModule statModuleModule, IModuleAPIConfiguration peerConfiguration) {
+	public SatetyAutomataPeerModule(SatetyAutomataModule statModuleModule, IModuleAPIConfiguration peerConfiguration) {
 		super();
 		this.module = statModuleModule;
 		this.peerConfiguration = peerConfiguration;

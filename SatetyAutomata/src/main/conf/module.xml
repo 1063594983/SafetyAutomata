@@ -3,7 +3,7 @@
 		id="${project.name}"
 		version="${project.version}"
 		binaryversion="3.8.01"
-		class="org.modelio.safetyautomata.impl.SafetyAutomataModule"
+		class="org.modelio.safetyautomata.impl.SatetyAutomataModule"
 		schema-level="2">
 	<ClassPath>
 		<PathEntry path='lib/${project.artifactId}-${project.version}.jar' />

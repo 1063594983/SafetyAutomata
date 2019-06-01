@@ -5,10 +5,10 @@
 
 	<!-- definition -->
 	<groupId>org.modelio</groupId>
-	<artifactId>SafetyAutomata</artifactId>
+	<artifactId>SatetyAutomata</artifactId>
 	<version>1.0.00</version>
 
-	<name>SafetyAutomata</name>
+	<name>SatetyAutomata</name>
 
 	<!-- repositories -->
 	<repositories>
