@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Module id="JUnit" class="org.modelio.junit.impl.JUnitModule" binaryversion="3.8.01" version="1.0.00" schema-level="2" uid="1cdac391-1b62-4aef-8cad-3a23d635456e">
+    <ClassPath>
+        <PathEntry path="lib/JUnit-1.0.00.jar"/>
+        <PathEntry path="lib/commons-lang3-3.1.jar"/>
+    </ClassPath>
+    <Profiles>
+        <Profile uid="ae763255-840f-4b38-bd67-35e161313815" id="JUnitProfile">
+            <Stereotype name="JUnit" metaclass="Class" is-hidden="false" label="JUint" uid="43b3c9c8-e7e0-4f6e-bc44-7d8476cddc11">
+                <Icon path="res/icons/junit.png"/>
+                <Image path=""/>
+            </Stereotype>
+            <Stereotype name="JUnitDependency" metaclass="Dependency" is-hidden="false" label="JUnitDependency" uid="40dbe638-aab3-495c-8901-351a4c43a844">
+                <Icon path="res/icons/junit.png"/>
+                <Image path=""/>
+            </Stereotype>
+            <Stereotype name="JUnitDiagram" metaclass="ClassDiagram" is-hidden="false" label="JUnitDiagram" uid="64e67f44-bdaa-4ed9-8e58-471fb1c2e4eb">
+                <Icon path="res/icons/junit.png"/>
+                <Image path=""/>
+            </Stereotype>
+            <MetaclassReference uid="123fb787-099d-4d3b-be79-7a7d017893f5" metaclass="ModelElement">
+                <TagTypes>
+                    <TagType name="TagName" uid="254905fc-bcf9-4451-a2ee-ce473922077c" label="Name" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </MetaclassReference>
+        </Profile>
+    </Profiles>
+    <Gui>
+        <Commands>
+            <Command id="CreateTestCase" label="%CreateTestCaseLabel" tooltip="%CreateTestCaseTooltip" image="res/icons/createTestCase.png" group="" modify-model="true" group-image="">
+                <Scope metaclass="Class" stereotype="JavaClass"/>
+                <Handler class="org.modelio.junit.command.CreateTestCase"/>
+            </Command>
+            <Command id="HelloWorldCommand" label="%HelloWorldCommandLabel" tooltip="%HelloWorldCommandTooltip" image="res/icons/testcommand24.png" group="" modify-model="false" group-image="">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="org.modelio.junit.command.HelloWorldCommand"/>
+            </Command>
+            <Command id="CreateElementCommandExample" label="%CreateElementCommandExampleLabel" tooltip="%CreateElementCommandExampleTooltip" image="res/icons/teststereotype24.png" group="" modify-model="true" group-image="">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="ElementCreate">
+                    <HParameter name="name" value="%CreateElementCommandExampleName"/>
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="teststereotype"/>
+                </Handler>
+            </Command>
+            <Command id="CreateDiagramCommandExample" label="%CreateDiagramCommandExampleLabel" tooltip="%CreateDiagramCommandExampleTooltip" image="res/icons/testdiagram24.png" group="" modify-model="true" group-image="">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="DiagramCreate">
+                    <HParameter name="name" value="%CreateDiagramCommandExampleName"/>
+                    <HParameter name="metaclass" value="ClassDiagram"/>
+                    <HParameter name="stereotype" value="testdiagram"/>
+                </Handler>
+            </Command>
+        </Commands>
+        <Tools>
+            <Tool id="CreateJunit" label="%CreateJunitLabel" tooltip="%CreateJunitToolTip" image="">
+                <Scope-target metaclass="ModelTree"/>
+                <Handler class="Box">
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="JUnit"/>
+                </Handler>
+            </Tool>
+            <Tool id="CreateJUnitDependency" label="%CreateJUnitDependencyLabel" tooltip="%CreateJUnitToolTip">
+                <Scope-source/>
+                <Scope-target metaclass="ModelTree"/>
+                <Handler class="Link">
+                    <HParameter name="metaclass" value="Dependency"/>
+                    <HParameter name="stereotype" value="JUnitDependency"/>
+                </Handler>
+            </Tool>
+            <Tool id="CreateElementDiagramCommandExample" label="%CreateElementDiagramCommandExampleLabel" tooltip="%CreateElementDiagramCommandExampleTooltip" image="res/icons/teststereotype24.png">
+                <Scope-source metaclass="ModelTree"/>
+                <Handler class="Box">
+                    <HParameter name="name" value="%CreateElementDiagramCommandExampleName"/>
+                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="stereotype" value="teststereotype"/>
+                </Handler>
+            </Tool>
+        </Tools>
+        <ContextualMenu>
+            <CommandRef refid="CreateTestCase"/>
+            <CommandRef refid="HelloWorldCommand"/>
+            <CommandRef refid="CreateElementCommandExample"/>
+            <CommandRef refid="CreateDiagramCommandExample"/>
+        </ContextualMenu>
+        <Diagrams>
+            <DiagramType base-diagram="ClassDiagram" stereotype="JUnitDiagram">
+                <Palette keepBasePalette="false">
+                    <ToolRef refid="CreateJUnit" group="JUnit"/>
+                    <ToolRef refid="CreateJUnitDependency" group="JUnit"/>
+                    <ToolRef refid="CREATE_PACKAGE" group="Standard"/>
+                    <ToolRef refid="CREATE_CLASS" group="Standard"/>
+                </Palette>
+                <Handler class="StandardCustomizer"/>
+            </DiagramType>
+            <DiagramType base-diagram="ClassDiagram" stereotype="testdiagram">
+                <Palette keepBasePalette="false">
+                    <ToolRef refid="CreateElementDiagramCommandExample" group="Customization"/>
+                </Palette>
+                <Handler class="StandardCustomizer"/>
+            </DiagramType>
+        </Diagrams>
+        <Views>
+            <PropertyPage class="org.modelio.junit.propertypage.JUnitPropertyPage" label="%JUnitPropertyPage" image="res/icons/JUnit.png">
+                <CommandRef refid="CreateTestCase"/>
+            </PropertyPage>
+        </Views>
+    </Gui>
+    <Dependencies/>
+</Module>

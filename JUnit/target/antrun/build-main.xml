@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <move file="D:\workspace\java\workspace1\JUnit/target/JUnit_1.0.00.zip" tofile="D:\workspace\java\workspace1\JUnit/target/JUnit_1.0.00.jmdac"/>
+</target>
+</project>
