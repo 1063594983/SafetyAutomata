@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Module id="${project.name}" class="org.modelio.junit.impl.JUnitModule" binaryversion="3.8.01" version="${project.version}" schema-level="2" uid="1cdac391-1b62-4aef-8cad-3a23d635456e">
+<Module id="JUnit" class="org.modelio.junit.impl.JUnitModule" binaryversion="3.8.01" version="1.0.00" schema-level="2" uid="1cdac391-1b62-4aef-8cad-3a23d635456e">
     <ClassPath>
-        <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
+        <PathEntry path="lib/JUnit-1.0.00.jar"/>
         <PathEntry path="lib/commons-lang3-3.1.jar"/>
     </ClassPath>
     <Profiles>
@@ -47,7 +47,7 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="DiagramCreate">
                     <HParameter name="name" value="%CreateDiagramCommandExampleName"/>
-                    <HParameter name="metaclass" value="ClassDiagram"/>
+                    <HParameter name="metaclass" value="Class"/>
                     <HParameter name="stereotype" value="testdiagram"/>
                 </Handler>
             </Command>
@@ -72,12 +72,11 @@
                 <Scope-source metaclass="ModelTree"/>
                 <Handler class="Box">
                     <HParameter name="name" value="%CreateElementDiagramCommandExampleName"/>
-                    <HParameter name="metaclass" value="Class"/>
+                    <HParameter name="metaclass" value="ClassDiagram"/>
                     <HParameter name="stereotype" value="teststereotype"/>
                 </Handler>
             </Tool>
         </Tools>
-        
         <ContextualMenu>
             <CommandRef refid="CreateTestCase"/>
             <CommandRef refid="HelloWorldCommand"/>
@@ -85,7 +84,6 @@
             <CommandRef refid="CreateDiagramCommandExample"/>
         </ContextualMenu>
         <Diagrams>
-        
             <DiagramType base-diagram="ClassDiagram" stereotype="JUnitDiagram">
                 <Palette keepBasePalette="false">
                     <ToolRef refid="CreateJUnit" group="JUnit"/>
@@ -95,14 +93,6 @@
                 </Palette>
                 <Handler class="StandardCustomizer"/>
             </DiagramType>
-            
-            <DiagramType base-diagram="ClassDiagram" stereotype="testdiagram">
-                <Palette keepBasePalette="false">
-                    <ToolRef refid="CreateElementDiagramCommandExample" group="Customization"/>
-                </Palette>
-                <Handler class="StandardCustomizer"/>
-            </DiagramType>
-            
         </Diagrams>
         <Views>
             <PropertyPage class="org.modelio.junit.propertypage.JUnitPropertyPage" label="%JUnitPropertyPage" image="res/icons/JUnit.png">
