@@ -23,21 +23,21 @@
     </Profiles>
     <Gui>
         <Commands>
-            <Command id="CreateState" label="State" tooltip="State" image="res/icons/state.png" group="Elements" modify-model="false" group-image="">
+            <Command id="ShowChildren" label="ShowChildren" tooltip="ShowChildren" image="" group="" modify-model="false" group-image="">
                 <Scope metaclass="ModelTree"/>
-                <Handler class="org.modelio.safetyautomata.command.CreateState"/>
+                <Handler class="org.modelio.safetyautomata.command.ShowChildren"/>
             </Command>
-            <Command id="CreateAssociationEnd" label="AssociationEnd" tooltip="AssociationEnd" image="res/icons/state.png" group="Elements" modify-model="true" group-image="">
+            <Command id="ShowDiagramElements" label="ShowDiagramElements" tooltip="ShowDiagramElements" image="res/icons/state.png" group="" modify-model="true" group-image="">
                 <Scope metaclass="ModelTree"/>
-                <Handler class="ElementCreate">
-                    <HParameter name="name" value="AssociationEnd"/>
-                    <HParameter name="metaclass" value="Actor"/>
-                    <HParameter name="stereotype" value="teststereotype"/>
-                </Handler>
+                <Handler class="org.modelio.safetyautomata.command.ShowDiagramElements"/>
             </Command>
             <Command id="HelloWorldCommand" label="HelloWorldCommandLabel" tooltip="HelloWorldCommandTooltip" image="res/icons/testcommand24.png" group="" modify-model="false" group-image="">
                 <Scope metaclass="ModelTree"/>
                 <Handler class="org.modelio.safetyautomata.command.HelloWorldCommand"/>
+            </Command>
+            <Command id="AnalyseStateMachine" label="AnalyseStateMachine" tooltip="AnalyseStateMachine" image="res/icons/testcommand24.png" group="" modify-model="false" group-image="">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="org.modelio.safetyautomata.command.AnalyseStateMachine"/>
             </Command>
             <Command id="CreateElementCommandExample" label="CreateElementCommandExampleLabel" tooltip="CreateElementCommandExampleTooltip" image="res/icons/teststereotype24.png" group="" modify-model="true" group-image="">
                 <Scope metaclass="ModelTree"/>
@@ -63,6 +63,10 @@
                     <HParameter name="stereotype" value="teststereotype"/>
                 </Handler>
             </Command>
+            <Command id="ShowAllStates" label="ShowAllStates" tooltip="ShowAllStates" image="" group="" modify-model="false" group-image="">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="org.modelio.safetyautomata.command.ShowAllStates"/>
+            </Command>
         </Commands>
         <Tools>
             <Tool id="CreateElementDiagramCommandExample" label="%CreateElementDiagramCommandExampleLabel" tooltip="%CreateElementDiagramCommandExampleTooltip" image="res/icons/teststereotype24.png">
@@ -83,12 +87,14 @@
             </Tool>
         </Tools>
         <ContextualMenu>
-            <CommandRef refid="CreateState"/>
-            <CommandRef refid="CreateAssociationEnd"/>
+            <CommandRef refid="ShowChildren"/>
+            <CommandRef refid="ShowDiagramElements"/>
             <CommandRef refid="HelloWorldCommand"/>
+            <CommandRef refid="AnalyseStateMachine"/>
             <CommandRef refid="CreateElementCommandExample"/>
             <CommandRef refid="commandId"/>
             <CommandRef refid="CreateDiagramCommandExample"/>
+            <CommandRef refid="ShowAllStates"/>
         </ContextualMenu>
         <Diagrams>
             <DiagramType base-diagram="ClassDiagram" stereotype="testdiagram">

@@ -28,5 +28,14 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/10165/.m2/repository/org/apache/commons/commons-lang3/3.1/commons-lang3-3.1.jar" sourcepath="C:/Users/10165/.m2/repository/org/apache/commons/commons-lang3/3.1/commons-lang3-3.1-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.apache.commons"/>
+			<attribute name="maven.artifactId" value="commons-lang3"/>
+			<attribute name="maven.version" value="3.1"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
