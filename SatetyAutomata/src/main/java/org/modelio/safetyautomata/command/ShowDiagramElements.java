@@ -20,13 +20,14 @@ public class ShowDiagramElements extends DefaultModuleCommandHandler {
 
 	@Override
 	public void actionPerformed(List<MObject> selectedElements, IModule module) {
-		MObject object = selectedElements.get(0);
 		
+		StateMachine stateMachine = (StateMachine) selectedElements.get(0);
 		IModuleContext context = module.getModuleContext();
 		ILogService logService = context.getLogService();
 		IDiagramService diagramService = context.getModelioServices().getDiagramService();
 		IModelingSession session = context.getModelingSession();
-		
+
+		/*
 		for (MObject o : object.getCompositionChildren()) {
 			if(o instanceof StaticDiagram) {
 				logService.info(o.getName());
@@ -55,6 +56,7 @@ public class ShowDiagramElements extends DefaultModuleCommandHandler {
 				
 			}
 		}
+		*/
 	}
 
 }
