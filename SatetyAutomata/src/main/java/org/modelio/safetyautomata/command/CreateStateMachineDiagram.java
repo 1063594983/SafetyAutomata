@@ -19,7 +19,6 @@ public class CreateStateMachineDiagram extends DefaultModuleCommandHandler{
 		// TODO Auto-generated method stub
 		MObject object = selectedElements.get(0);
 		Package myPackage = (Package) object;
-		myPackage.get
 	}
 	
 }
