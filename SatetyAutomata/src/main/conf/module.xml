@@ -57,7 +57,7 @@
             </Command>
             <Command id="CreateStateMachineDiagram" label="CreateStateMachineDiagram" tooltip="CreateStateMachineDiagram" image="res/icons/testdiagram24.png" group="" modify-model="true" group-image="">
                 <Scope metaclass="ModelTree"/>
-                <Handler class="org.modelio.safetyautomata.command.CreateStateMachineDiagram" />
+                <Handler class="org.modelio.safetyautomata.command.CreateStateMachineDiagram"/>
             </Command>
             <Command id="commandId" label="commandLabel" tooltip="commandTip" image="res/icons/testdiagram24.png" group="hello" modify-model="true" group-image="res/icons/testdiagram24.png">
                 <Scope metaclass="ModelTree"/>

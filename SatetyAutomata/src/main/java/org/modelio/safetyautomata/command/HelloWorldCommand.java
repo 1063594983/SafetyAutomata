@@ -3,13 +3,16 @@ package org.modelio.safetyautomata.command;
 import java.util.List;
 
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.modelio.api.modelio.diagram.IDiagramHandle;
 import org.modelio.api.modelio.diagram.IDiagramService;
+import org.modelio.api.modelio.editor.IEditionService;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.module.IModule;
 import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.api.module.context.IModuleContext;
 import org.modelio.api.module.context.configuration.IModuleUserConfiguration;
 import org.modelio.api.module.context.log.ILogService;
+import org.modelio.metamodel.diagrams.StateMachineDiagram;
 import org.modelio.metamodel.diagrams.StaticDiagram;
 import org.modelio.metamodel.uml.behavior.stateMachineModel.State;
 import org.modelio.metamodel.uml.behavior.stateMachineModel.StateMachine;
@@ -61,7 +64,7 @@ public class HelloWorldCommand extends DefaultModuleCommandHandler {
 		 * MessageDialog.openInformation(null, "Hello", modelelt.getName());
 		 */
 
-		
+			/*
 		  MObject object = selectedElements.get(0);
 		  
 		  IModuleContext context = module.getModuleContext(); ILogService logService =
@@ -73,6 +76,24 @@ public class HelloWorldCommand extends DefaultModuleCommandHandler {
 		  for (MObject o : object.getCompositionChildren()) { if (o instanceof
 		  StaticDiagram) { logService.info(o.getName()); } else { logService.info("2 "
 		  + o.getName()); } }
+		  */
+		 StateMachineDiagram stateMachineDiagram = (StateMachineDiagram) selectedElements.get(0);
+		 IModuleContext context = module.getModuleContext();
+		 IModelingSession session = context.getModelingSession();
+		 IDiagramService diagramService = context.getModelioServices().getDiagramService();
+		 IEditionService editionService = context.getModelioServices().getEditionService();
+		 /*
+		 StateMachineDiagram newDiagram = session.getModel().createStateMachineDiagram("new diagram"
+				 , seles, arg2);*/
+		 try (IDiagramHandle dh = diagramService.getDiagramHandle(stateMachineDiagram)) {
+			 
+			 
+			 
+			 dh.save();
+			 dh.close();
+		 }
+		 
+		 editionService.openEditor(stateMachineDiagram);
 		 
 
 	}
