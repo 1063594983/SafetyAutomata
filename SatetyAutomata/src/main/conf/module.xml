@@ -67,6 +67,10 @@
                 <Scope metaclass="ModelTree"/>
                 <Handler class="org.modelio.safetyautomata.command.ShowAllStates"/>
             </Command>
+            <Command id="RunStateMachine" label="RunStateMachine" tooltip="RunStateMachine" image="" group="" modify-model="false" group-image="">
+                <Scope metaclass="ModelTree"/>
+                <Handler class="org.modelio.safetyautomata.command.RunStateMachine"/>
+            </Command>
         </Commands>
         <Tools>
             <Tool id="CreateElementDiagramCommandExample" label="%CreateElementDiagramCommandExampleLabel" tooltip="%CreateElementDiagramCommandExampleTooltip" image="res/icons/teststereotype24.png">
@@ -95,6 +99,7 @@
             <CommandRef refid="commandId"/>
             <CommandRef refid="CreateDiagramCommandExample"/>
             <CommandRef refid="ShowAllStates"/>
+            <CommandRef refid="RunStateMachine"/>
         </ContextualMenu>
         <Diagrams>
             <DiagramType base-diagram="ClassDiagram" stereotype="testdiagram">
