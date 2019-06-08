@@ -2,6 +2,8 @@ package org.modelio.safetyautomata.command;
 
 import java.util.List;
 
+import javax.script.ScriptException;
+
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.api.module.IModule;
@@ -31,10 +33,17 @@ public class GenerateStateMachine extends DefaultModuleCommandHandler {
 		IModelingSession session = context.getModelingSession();
 		
 		Graph graph = new Graph(entry);
+		Graph graph2 = null;
+		try {
+			graph2 = graph.generateDataFlowGraph();
+		} catch (ScriptException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		logService.info("graph complete");
 		
 		try (ITransaction t = session.createTransaction("generate")) {
-			StateMachine stateMachine2 = StateMachineCreator.createStateMachine(graph, module);
+			StateMachine stateMachine2 = StateMachineCreator.createStateMachine(graph2, module);
 			stateMachine.getOwner().getOwnedBehavior().add(stateMachine2);
 			
 			t.commit();

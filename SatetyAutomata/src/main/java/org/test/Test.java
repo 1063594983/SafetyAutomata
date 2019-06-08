@@ -1,5 +1,9 @@
 package org.test;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
+
 import javax.script.Bindings;
 import javax.script.Invocable;
 import javax.script.ScriptContext;
@@ -11,42 +15,55 @@ import javax.script.SimpleScriptContext;
 import utils.graph.MyTransition;
 import utils.graph.Node;
 
-public class Test {
-	public static void main(String[] args) throws ScriptException {
-		//System.out.println("hello");
-		ScriptEngineManager manager = new ScriptEngineManager();
-	    ScriptEngine se = manager.getEngineByName("js");
-	    
-		String str = "123 > 1 && 4 < 2";
-		boolean result = true;
-		try {
-			result = (boolean) ((ScriptEngine) se).eval(str);
-		} catch (ScriptException e) {
-			e.printStackTrace();
-		}
-		
-		//System.out.println(result);
-		
-		Node entry = new Node("inital");
-		Node n1 = new Node("normal");
-		n1.addAction("a = a + 2");
-		Node n2 = new Node("normal");
-		n2.addAction("b = b + 2");
-		MyTransition mt1 = new MyTransition(entry, n1, "a > 10");
-		MyTransition mt2 = new MyTransition(entry, n2, "a <= 10");
-		entry.addOutGoing(mt1);
-		entry.addOutGoing(mt2);
-		Node exit = new Node("exit");
-		MyTransition mt10 = new MyTransition(n1, exit, null);
-		MyTransition mt20 = new MyTransition(n2, exit, null);
-		n1.addOutGoing(mt10);
-		n2.addOutGoing(mt20);
-		
-		//analyse(entry);
-		String hello = null;
-		System.out.println(hello);
-	}
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+public class Test {
+	
+	public static void main(String[] args) throws ScriptException {
+		MediaType MEDIA_TYPE = MediaType.parse("text/text; charset=utf-8");
+        String url = "http://localhost:8080/getParserResultOfJS"; // 请求链接
+        OkHttpClient okHttpClient = new OkHttpClient(); // OkHttpClient对象
+        String string = "if (b > 10) {\r\n" + 
+        		"    b = b + 2;\r\n" + 
+        		"} else {\r\n" + 
+        		"    a = a + 2;\r\n" + 
+        		"}\r\n" + 
+        		"\r\n" + 
+        		"if (a + b > 10) {\r\n" + 
+        		"    a *= a;\r\n" + 
+        		"} else {\r\n" + 
+        		"    b *= b;\r\n" + 
+        		"}\r\n" + 
+        		"\r\n" + 
+        		"if (a < 5) {\r\n" + 
+        		"    b -= 2;\r\n" + 
+        		"}"; // 要发送的字符串
+        /**
+         * RequestBody.create(MEDIA_TYPE, string)
+         * 第二个参数可以分别为：byte[]，byteString,File,String。
+         */
+        Request request = new Request.Builder().url(url)
+                    .post(RequestBody.create(MEDIA_TYPE,string)).build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            public void onResponse(Call call, Response response) throws IOException {
+                System.out.println(response.body().string());
+            }
+            
+            public void onFailure(Call call, IOException e) {
+                System.out.println(e.getMessage());
+            }
+        });
+	}
 	private static void analyse(Node entry) throws ScriptException {
 		int a = 10, b = 20;
 		String init = "var a = " + a + ";";

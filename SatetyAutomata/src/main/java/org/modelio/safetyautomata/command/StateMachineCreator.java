@@ -64,11 +64,12 @@ public class StateMachineCreator {
 	}
 	
 	private static void analyse(Node head, List<State> states, IUmlModel factory) {
-		tmp(head, states, factory);
+		List <Node> visited = new ArrayList<Node>();
+		tmp(head, states, factory, visited);
 		
 	}	
 	
-	private static State tmp(Node head, List<State> states, IUmlModel factory) {
+	private static State tmp(Node head, List<State> states, IUmlModel factory, List<Node> visited) {
 		State newState = null;
 		try (ITransaction itran = session.createTransaction("generate state machine")) {
 			newState = factory.createState();
@@ -80,14 +81,22 @@ public class StateMachineCreator {
 				logService.info("action" + action);
 				newState.getInternal().add(it);
 			}
+			
+			visited.add(head);
 			states.add(newState);
 			
 			for(MyTransition mt : head.getOutgoing()) {
 				Transition t = factory.createTransition();
 				t.setGuard(mt.getCondition());
+				
 				logService.info("condition" + mt.getCondition());
 				t.setSource(newState);
-				t.setTarget(tmp(mt.getTarget(), states, factory));
+				
+				if (visited.contains(mt.getTarget())) {
+					t.setTarget(states.get(visited.indexOf(mt.getTarget())));
+				} else {
+					t.setTarget(tmp(mt.getTarget(), states, factory, visited));
+				}				
 			}
 			
 			itran.commit();

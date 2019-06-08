@@ -7,6 +7,7 @@ public class Node {
 	private List <MyTransition> outgoing = new ArrayList<MyTransition>();
 	private List <String> actions = new ArrayList<String>();
 	private String type;	//normal, entry, exit 
+	private String init = null;
 	
 	public Node(String type) {
 		super();
@@ -43,6 +44,14 @@ public class Node {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getInit() {
+		return init;
+	}
+
+	public void setInit(String init) {
+		this.init = init;
 	}
 	
 	

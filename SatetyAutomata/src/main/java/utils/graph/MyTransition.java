@@ -4,6 +4,10 @@ public class MyTransition {
 	private Node source;
 	private Node target;
 	private String condition;
+	
+	public MyTransition() {
+		
+	}
 
 	public MyTransition(Node source, Node target, String condition) {
 		super();

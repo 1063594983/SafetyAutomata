@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<Module
+		id="${project.name}"
+		version="${project.version}"
+		binaryversion="3.8.01"
+		class="exercise.softwarerequirement.impl.SoftwareRequirementModule"
+		schema-level="2">
+	<ClassPath>
+		<PathEntry path='lib/${project.artifactId}-${project.version}.jar' />
+		<!-- lib add example -->
+		<PathEntry path='lib/commons-lang3-3.1.jar' />
+	</ClassPath>
+	<Profiles>
+		<Profile id="TestArchetypeProfile">
+			<!-- stereotypes example -->
+			<Stereotype name="teststereotype" label="Test Stereotype" metaclass="Class" is-hidden="false">
+				<Icon path="res/icons/teststereotype24.png" />
+				<Image path="res/icons/teststereotype48.png" />
+			</Stereotype>
+
+			<Stereotype name="testdiagram" label="Test Diagram" metaclass="ClassDiagram" is-hidden="false">
+				<Icon path="res/icons/testdiagram24.png" />
+				<Image path="" />
+			</Stereotype>
+
+			<!-- tag value example -->
+			<MetaclassReference metaclass="ModelElement">
+				<TagTypes>
+					<TagType name="TagName" label="Name" parameter-card="1" is-hidden="false" is-signed="false" />
+				</TagTypes>
+			</MetaclassReference>
+		</Profile>
+	</Profiles>
+
+	<Gui>
+		<!-- explorer command example -->
+		<Commands>
+			<Command id="GenerateDataFlowDiagram"
+					label="Generate DataFlow Diagram"
+					tooltip="Generate DataFlow Diagram"
+					image="res/icons/testcommand24.png"
+					group=""
+					group-image=""
+					modify-model="false"
+					>
+				<Scope metaclass="ModelTree"/>
+				<Handler class="exercise.softwarerequirement.command.GenerateDataFlowDiagram" />
+			</Command>
+
+			<!-- element creation command example -->
+			<Command id="CreateElementCommandExample"
+					label="%CreateElementCommandExampleLabel"
+					tooltip="%CreateElementCommandExampleTooltip"
+					image="res/icons/teststereotype24.png"
+					group=""
+					group-image=""
+					modify-model="true"
+					>
+				<Scope metaclass="ModelTree"/>
+				<Handler class="ElementCreate">
+					<HParameter name="name" value="%CreateElementCommandExampleName"/>
+					<HParameter name="metaclass" value="Class"/>
+					<HParameter name="stereotype" value="teststereotype"/>
+				</Handler>
+			</Command>
+
+			<!-- diagram customization example -->
+			<Command id="CreateDiagramCommandExample"
+					name="CreateDiagramCommandExample"
+					label="%CreateDiagramCommandExampleLabel"
+					tooltip="%CreateDiagramCommandExampleTooltip"
+					image="res/icons/testdiagram24.png"
+					group=""
+					group-image=""
+					modify-model="true"
+					>
+				<Scope metaclass="ModelTree"/>
+				<Handler class="DiagramCreate">
+					 <HParameter name="name" value="%CreateDiagramCommandExampleName"/>
+					<HParameter name="metaclass" value="ClassDiagram"/>
+					<HParameter name="stereotype" value="testdiagram"/>
+				</Handler>
+			</Command>
+		</Commands>
+		
+		<Tools>
+			<Tool id="CreateElementDiagramCommandExample"
+					label="%CreateElementDiagramCommandExampleLabel" tooltip="%CreateElementDiagramCommandExampleTooltip"
+					image="res/icons/teststereotype24.png">
+					<Scope-source metaclass="ModelTree"/>
+					<Handler class="Box">
+						<HParameter name="name" value="%CreateElementDiagramCommandExampleName"/>
+						<HParameter name="metaclass" value="Class"/>
+						<HParameter name="stereotype" value="teststereotype"/>
+					</Handler>
+			</Tool>
+		</Tools>
+		
+		<ContextualMenu>
+			<CommandRef refid="GenerateDataFlowDiagram"/>
+			<CommandRef refid="CreateElementCommandExample"/>
+			<CommandRef refid="CreateDiagramCommandExample"/>
+		</ContextualMenu>
+		<Diagrams>
+			<DiagramType base-diagram="ClassDiagram" stereotype="testdiagram">
+				<Palette keepBasePalette="false">
+					<ToolRef refid="CreateElementDiagramCommandExample" group="Customization"/>
+				</Palette>
+				<Handler class="StandardCustomizer"/>
+			</DiagramType>
+		</Diagrams>
+		<Views/>
+	</Gui>
+	<Dependencies/>
+</Module>
+
