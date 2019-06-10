@@ -38,7 +38,7 @@ public class GenerateDataFlowDiagram extends DefaultModuleCommandHandler {
 
 		StateMachineCreator generateAutomata = new StateMachineCreator(module);
 		StateMachine stateMachine = null;
-
+		logService.info("generate datadiagram start");
 		try {
 			stateMachine = generateAutomata.generateDataFlowDiagram(entry, tmp.getOwner());
 		} catch (ScriptException e) {

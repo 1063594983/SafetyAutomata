@@ -56,6 +56,9 @@ public class StateMachineCreator {
 		ScriptEngineManager manager = new ScriptEngineManager();
 	    ScriptEngine se = manager.getEngineByName("js");
 	    se.eval(initStr);
+	    logService.info(initStr);
+	    logService.info("init complete");
+	    
 		State head = null;
 		String stateName = "";
 		for (String param : params) {
@@ -73,11 +76,13 @@ public class StateMachineCreator {
 			
 			StateVertex current = entry;
 			StateVertex tmpHead = head;
-			
+			boolean flag2 = true;
 			while (current.getOutGoing().size() != 0) {
+				flag2 = true;
 				for (Transition tran : current.getOutGoing()) {
 					if (tran.getGuard() == "") {
 						current = tran.getTarget();
+						flag2 = false;
 						break;
 					} else {
 						
@@ -87,6 +92,7 @@ public class StateMachineCreator {
 							flag = (boolean) se.eval(tran.getGuard());
 						} catch (Exception e) {
 							current = tran.getTarget();
+							flag2 = false;
 							break;
 						}
 						if (flag) {
@@ -116,12 +122,15 @@ public class StateMachineCreator {
 							current = tran.getTarget();
 							
 							//diagram.getRepresented().add(tmpState);
-							
+							flag2 = false;
 							break;
 						} else {
 							continue;
 						}
 					}
+				}
+				if(flag2) {
+					break;
 				}
 			}
 
