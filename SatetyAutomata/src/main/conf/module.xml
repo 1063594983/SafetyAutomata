@@ -4,6 +4,8 @@
         <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
         <PathEntry path="lib/commons-lang3-3.1.jar"/>
         <PathEntry path="lib/fastjson-1.2.58.jar"/>
+        <PathEntry path="lib/okhttp-3.8.1.jar"/>
+        <PathEntry path="lib/okio-1.13.0.jar"/>
     </ClassPath>
     <Profiles>
         <Profile uid="60f7b225-d732-4959-8ad9-3c67b0ed200b" id="TestArchetypeProfile">
@@ -133,7 +135,10 @@
                 <Handler class="StandardCustomizer"/>
             </DiagramType>
         </Diagrams>
-        <Views/>
+        <Views>
+            <PropertyPage class="org.exercise.propertypage.SafetyAutomataPage" label="state page" image=""/>
+            <PropertyPage class="org.exercise.propertypage.TransitionPage" label="transition page" image=""/>
+        </Views>
     </Gui>
     <Dependencies/>
 </Module>

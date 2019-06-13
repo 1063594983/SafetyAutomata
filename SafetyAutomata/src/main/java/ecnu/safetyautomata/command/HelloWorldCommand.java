@@ -1,4 +1,4 @@
-package exercise.softwarerequirement.command;
+package ecnu.safetyautomata.command;
 
 import java.util.List;
 
@@ -8,7 +8,6 @@ import org.modelio.api.module.IModule;
 import org.modelio.api.module.command.DefaultModuleCommandHandler;
 import org.modelio.api.module.context.configuration.IModuleUserConfiguration;
 import org.modelio.api.module.context.log.ILogService;
-import org.modelio.metamodel.uml.behavior.stateMachineModel.StateMachine;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.vcore.smkernel.mapi.MObject;
 
@@ -50,10 +49,7 @@ public class HelloWorldCommand extends DefaultModuleCommandHandler {
         IModuleUserConfiguration configuration = module.getModuleContext().getConfiguration();
 
         ModelElement modelelt = (ModelElement)selectedElements.get(0);
-        //MessageDialog.openInformation(null, "Hello", modelelt.getName());
-        
-        StateMachine stateMachine = (StateMachine) modelelt;
-        
+        MessageDialog.openInformation(null, "Hello", modelelt.getName());
     }
 
 
